@@ -1,0 +1,13 @@
+<CanvasStack /> - a simple canvas 
+<canvas ref={fabricRef} width={640} height={360} style={{border: '1px solid black'}}/> - simple canvas no use
+<MyFabric />
+<DrawComponent /> - new click creates new line that moves according to mouse. similar to stateline, but every click action happens.
+<DrawLine /> - unselectable dragging lines that cannot be deactivated
+<StateLine /> - one click skip, next click new line.
+
+M: Move to a point.
+L: Draw a straight line to a point.
+C (Cubic Bezier): Draw a cubic Bezier curve.
+Q (Quadratic Bezier): Draw a quadratic Bezier curve.
+A (Arc): Draw an arc.
+Z: Close the path.

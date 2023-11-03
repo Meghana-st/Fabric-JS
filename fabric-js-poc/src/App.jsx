@@ -9,7 +9,8 @@ import FabricContext from './Components/FabricContext'
 import MyFabric from './Components/useFabric'
 import DrawComponent from './Components/DrawComponent'
 import DrawLine from './Components/Individual Components/DrawLine'
-import AsyncLine from './Components/Individual Components/AsyncLine'
+import StateLine from './Components/Individual Components/StateLine'
+import TextComponent from './Components/Individual Components/TextComponent'
 
 function App() {
   const fabricRef = useFabric();
@@ -17,13 +18,12 @@ function App() {
   return (
     <>
     <FabricContext.Provider value={React.createRef()}>
-     {/* <CanvasStack /> */}
-     {/* <canvas ref={fabricRef} width={640} height={360} style={{border: '1px solid black'}}/> */}
-     <MyFabric />
-     {/* <FabricContextComponent /> */}
-     {/* <DrawComponent /> */}
-     {/* <DrawLine /> */}
-     <AsyncLine />
+    {/* <CanvasStack /> */}
+    <MyFabric />
+    {/* <DrawComponent /> */}
+    {/* <DrawLine /> */}
+    {/* <StateLine /> */}
+    <TextComponent />
      </FabricContext.Provider>
     </>
   )
