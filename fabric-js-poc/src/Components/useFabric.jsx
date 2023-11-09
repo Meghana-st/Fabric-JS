@@ -83,8 +83,6 @@ const useFabric = () => {
       //strokeWidth : 1,
       //selectable: false,
   });
-
-    console.log(spline)
   
   //  canvas.current.arc(100, 75, 50, 135, 2 * Math.PI);
 
@@ -150,11 +148,55 @@ const useFabric = () => {
       });
     }
 
+    const onDeleteObject = () =>{
+
+      const selectedObjects = canvas.current.getActiveObjects();
+      console.log("Active objects: ", selectedObjects);
+      selectedObjects.forEach((obj)=>{
+        canvas.current.remove(obj);
+      })
+
+      canvas.current.discardActiveObject();
+    }
+
+    // document.onkeydown = function(event){
+    //   if(event.keyCode === 46)
+    //   {
+    //     console.log(46)
+    //   }
+    // }
+
+    const keyDownHandler = (event) =>{
+      if(event.ctrlKey && event.keyCode === 67)
+      {
+        onCopyObject();
+      }
+      else if(event.ctrlKey && event.keyCode === 86)
+      {
+        onPasteObject();
+      }
+      else if(event.keyCode === 46)
+      {
+        onDeleteObject();
+      }
+      else
+      {
+        console.log("none");
+      }
+    }
+
+    createListenersKeyboard();
+    function createListenersKeyboard() {
+        document.onkeydown = keyDownHandler;
+        //document.onkeyup = onKeyUpHandler;
+    }
+
     return (
       <>
-    <canvas ref={fabricRef} width={640} height={360} style={{border: '1px solid black'}}/>
+    <canvas ref={fabricRef} width={640} height={360} style={{border: '1px solid black'}} />
     <button onClick={onCopyObject}>Copy</button>
     <button onClick={onPasteObject}>Paste</button>
+    <button onClick={onDeleteObject}>Delete</button>
     </>
     );
   }
